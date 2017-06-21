@@ -1,0 +1,8 @@
+trainFile = labelled_sentences.txt
+crossValidationFolds = 1
+testFile = trial.tsv
+useClassFeature = true
+0.splitWordsRegexp = \\s
+0.useSplitWords = true
+useNB = false
+goldAnswerColumn = 1

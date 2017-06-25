@@ -14,22 +14,22 @@ public class Ner {
 	public static ArrayList<String> Words = new ArrayList<String>();
 	private static Map<String, String> abbreviation = null;
 	private static int count=0;
-	public static ArrayList<String> Input(String text) throws FileNotFoundException, IOException{
-		//String x= "data/"+path;
-		//Scanner sc = new Scanner(new File(x));
+	public static ArrayList<String> Input(String path) throws FileNotFoundException, IOException{
+		String x= path;
+		Scanner sc = new Scanner(new File(x));
 		ArrayList<String> sentence = new ArrayList<String>();
-		//while(sc.hasNextLine())
-		sentence.add(text);
+		while(sc.hasNextLine())
+		sentence.add(sc.nextLine());
 		//System.out.println("LINE PASSED"+text);
-		//for(int i=0;i<sentence.size();i++){
+		for(int i=0;i<sentence.size();i++){
 			
-			String s = sentence.get(0).toString();
+			String s = sentence.get(i).toString();
 			//System.out.println(s);
 			ArrayList<String> obj = new ArrayList<String>();
 			obj= processLine(s);
-		//}
+		}
 		
-		
+		sc.close();
 		return Words;
 	}
 	
@@ -89,8 +89,13 @@ public class Ner {
 		}
 		return true;
 	}
-	public static void main(String args[]){
-		System.out.println();
+	public static void main(String args[]) throws FileNotFoundException, IOException{
+		System.out.println("Starting");
+		ArrayList<String> write= new ArrayList<String>();
+		write=Input("data/trial_1.txt");
+		txt.write.buffer(write, "test3.txt");
+		System.out.println("Success");
+		
 	}
 	private static String initAbbreviation(String key) {
 		abbreviation = new HashMap<String, String>();
@@ -125,7 +130,7 @@ public class Ner {
 		abbreviation.put("abt", " about");
 		abbreviation.put("exp", " experience");
 		abbreviation.put("mrt", " modified retweet");
-		abbreviation.put("idk", " I don't know");
+		abbreviation.put("idk", " I do not know");
 		abbreviation.put("ikr", " I know right");
 		abbreviation.put("tbh", " to be honest");
 		abbreviation.put("brb", " be right back");

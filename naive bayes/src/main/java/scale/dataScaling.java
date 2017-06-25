@@ -23,7 +23,7 @@ public class dataScaling {
 		//posFile=wordUtils.WordCount.totalWord("data/LEMMANewPositiveModified.txt");
 		//negFile=wordUtils.WordCount.totalWord("data/LEMMANewNegativeModified.txt");
 		try{
-			String path="data/LEMMANewNegativeModified.txt";
+			String path="data/LEMMANewPositiveModified.txt";
 			fr = new FileReader(path);
 			br = new BufferedReader(fr);
 			String[] x = null;
@@ -76,7 +76,7 @@ public class dataScaling {
 		min=wordUtils.WordCount.findMin(neg);
 		System.out.println(""+max + " "+min);
 		try{
-			String path="data/negativeScale.txt";
+			String path="data/positiveScale.txt";
 			fw = new FileWriter(path);
 			bw = new BufferedWriter(fw);
 			String[] x = null;
@@ -85,6 +85,7 @@ public class dataScaling {
 			for(j=0;j<sentence.size();j++){
 				s=sentence.get(j).toString();
 				 x= s.split(" ");
+				 bw.write("1 ");
 				for( i=0;i<x.length;i++)
 					{
 					bw.write(i+":"+getScale(max,min,0,1,neg.get(k))+" ");

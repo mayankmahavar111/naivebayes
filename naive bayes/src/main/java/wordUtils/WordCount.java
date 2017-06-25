@@ -10,7 +10,6 @@ public class WordCount {
 	private static FileReader fr ;
 	private static Scanner sc;
 	private static Scanner sc2;
-	static int i=0;
 	public static double totalWord(String path) throws FileNotFoundException, IOException
 	{
 		int count=0;
@@ -59,7 +58,7 @@ public class WordCount {
 	public static double wordCount(String Key,String path) throws FileNotFoundException, IOException{
 		int count=0;
 		String x= "data/"+path,y;
-		System.out.println("Counting : "+i++);
+		//System.out.println("Counting : "+i++);
 		sc = new Scanner(new File(x));
 		try{
 			while(sc.hasNext()){
@@ -97,18 +96,18 @@ public class WordCount {
 		return false;
 		
 	}
-	public static int DistinctWords(ArrayList<String> word){
-		String Key;
+	public static ArrayList DistinctWords(ArrayList<String> word){
+		String Key=word.get(0).toString();
 		for(int i=0;i<word.size();i++)
 		{
-			Key=word.get(i);
+			Key=word.get(i).toString().trim();
 			for(int j=0;j<word.size();j++)
 			{
 				if(Key.equalsIgnoreCase(word.get(j).toString())&&i!=j)
 					word.remove(j);
 			}
 		}
-		return word.size();
+		return word;
 	}
 	public static int findMax(ArrayList<Integer> count ){
 		int max=count.get(0);
